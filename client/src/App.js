@@ -24,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     getMovieList();
-  }, []);
+  }, [movieList]);
 
   return (
     <>
@@ -38,7 +38,7 @@ const App = () => {
         <Movie addToSavedList={addToSavedList} />
       </Route>
 
-      <Route path='/update-movie:id'>
+      <Route path='/update-movie/:id'>
         <UpdateForm />
       </Route>
     </>

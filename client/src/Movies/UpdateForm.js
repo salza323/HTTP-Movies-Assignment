@@ -26,7 +26,7 @@ const UpdateForm = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/movies${id}`)
+      .get(`http://localhost:5000/api/movies/${id}`)
       .then((res) => {
         setMovie(res.data);
       })
@@ -36,10 +36,10 @@ const UpdateForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5000/api/movies${id}`, movie)
+      .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
       .then((res) => {
-        props.setMovies(res.data);
-        push('/movies');
+        setMovie(res.data);
+        push('/');
       })
       .catch((err) => {
         console.log('Put Error:', err);
@@ -57,6 +57,7 @@ const UpdateForm = (props) => {
           placeholder='title'
           value={movie.title}
         />
+        <br></br>
         <input
           type='text'
           name='director'
@@ -64,6 +65,7 @@ const UpdateForm = (props) => {
           placeholder='director'
           value={movie.director}
         />
+        <br></br>
         <input
           type='text'
           name='metascore'
@@ -71,6 +73,7 @@ const UpdateForm = (props) => {
           placeholder='metascore'
           value={movie.metascore}
         />
+        <br></br>
         <input
           type='text'
           name='stars'
@@ -78,7 +81,8 @@ const UpdateForm = (props) => {
           placeholder='stars'
           value={movie.stars}
         />
-        <button>Add Movie</button>
+        <br></br>
+        <button>Make Changes</button>
       </form>
     </div>
   );
