@@ -14,9 +14,11 @@ function Movie({ addToSavedList }) {
 
   const deleteHandler = () => {
     axios
-      .delete(`http://localhost:3333/api/movies/${movie.id}`)
-      .then((res) => {
-        setMovie(res.data);
+      .delete(`http://localhost:5000/api/movies/${movie.id}`)
+      .then(() => {
+        // console.log(res.data);
+        //don't need to set on delete
+        // setMovie(res.data);
         push('/');
       })
       .catch((err) => {
